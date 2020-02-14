@@ -1,0 +1,2 @@
+OK = 0
+VCODE_ERROR = 1000
