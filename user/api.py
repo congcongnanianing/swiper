@@ -35,7 +35,10 @@ def login(request):
 
 
 def show_profile(request):
-    return
+
+    user = request.user
+
+    return render_json(user.profile.to_dict())
 
 
 def modify_profile(request):

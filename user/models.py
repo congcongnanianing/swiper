@@ -40,6 +40,26 @@ class User(models.Model,ModelMixin):
     #         "location":self.location
     #     }
 
+    # todo 对外键对优化
+    '''
+    由于使用外键性能比较差，且不适用于分布式数据库；我们为了达到相同对效果，可以将User和Profile两个类（一对一关系）id保持一致来实现关联。
+    
+    
+    '''
+
+    @property
+    def profile(self):
+
+        # 判断当前对象对_profile属性是否存在
+        if not hasattr(self,'_profile'):
+            '''由于等号右侧执行的是数据库的操作，效率比较低，假如不将_profile设置为属性，那么执行 _profile.location、_profile.min_distance、_profile.max_distance 对应的是三次数据库的查询，
+               加上self.设置为属性后，不管执行多少次 _profile.xxx属性的操作都只进行一次数据库的查询
+            '''
+            # 这也是一种懒加载的方式，只有当执行user.profile的时候才会执行。get_or_create函数有两个返回值，另外一个不关心所以直接用 "_" 表示
+            self._profile, _ = Profile.objects.get_or_create(id=self.id)
+
+        return self._profile
+
 
 class Profile(models.Model,ModelMixin):
 
