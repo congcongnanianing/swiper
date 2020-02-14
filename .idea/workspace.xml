@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12f4a807-eb5c-4163-a754-09491c68cd22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/common/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/errors.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/swiper/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/worker/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/worker/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sms.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swiper/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/swiper/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swiper/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/swiper/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="358">
+              <caret line="31" column="65" selection-start-line="31" selection-start-column="65" selection-end-line="31" selection-end-column="65" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -83,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/sms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" lean-forward="true" selection-start-line="37" selection-start-column="30" selection-end-line="40" />
+            <state relative-caret-position="442">
+              <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -96,19 +81,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/swiper/config.py">
+        <entry file="file://$PROJECT_DIR$/lib/orm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+            <state relative-caret-position="15">
+              <caret line="1" column="16" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/user/api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+            <state relative-caret-position="330">
+              <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -134,13 +119,14 @@
         <option value="$PROJECT_DIR$/swiper/urls.py" />
         <option value="$PROJECT_DIR$/common/errors.py" />
         <option value="$PROJECT_DIR$/lib/http.py" />
-        <option value="$PROJECT_DIR$/user/models.py" />
         <option value="$PROJECT_DIR$/swiper/settings.py" />
         <option value="$PROJECT_DIR$/swiper/config.py" />
-        <option value="$PROJECT_DIR$/user/api.py" />
         <option value="$PROJECT_DIR$/worker/config.py" />
         <option value="$PROJECT_DIR$/worker/__init__.py" />
         <option value="$PROJECT_DIR$/lib/sms.py" />
+        <option value="$PROJECT_DIR$/lib/orm.py" />
+        <option value="$PROJECT_DIR$/user/models.py" />
+        <option value="$PROJECT_DIR$/user/api.py" />
       </list>
     </option>
   </component>
@@ -221,25 +207,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581564038800</updated>
-      <workItem from="1581564039890" duration="12945000" />
+      <workItem from="1581564039890" duration="14904000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12945000" />
+    <option name="totallyTimeSpent" value="14904000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1881259" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1881259" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.19518073" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -279,16 +265,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -300,13 +276,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/swiper/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -330,16 +299,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/swiper/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -350,12 +309,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/swiper/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/sms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" lean-forward="true" selection-start-line="37" selection-start-column="30" selection-end-line="40" />
+        <state relative-caret-position="442">
+          <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/orm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="31" column="65" selection-start-line="31" selection-start-column="65" selection-end-line="31" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -23,7 +23,7 @@ def login(request):
         user,created = User.objects.get_or_create(phonenums=phonenum)
         request.session['uid'] = user.id
 
-        return render_json(user.to_dict())
+        return render_json(user.to_dict('birth_year'))
 
         # try:
         #     user = User.objects.get()

@@ -3,6 +3,7 @@ import datetime
 from django.db import models
 
 # Create your models here.
+from lib.orm import ModelMixin
 
 SEX = (
         ('1','男'),
@@ -10,7 +11,7 @@ SEX = (
     )
 
 
-class User(models.Model):
+class User(models.Model,ModelMixin):
 
     nickname = models.CharField(max_length=32,unique=True)
     phonenums = models.CharField(max_length=16,unique=True)
@@ -28,18 +29,19 @@ class User(models.Model):
         birth_day = datetime.date(self.birth_year,self.birth_month,self.birth_day)
         return (now_day - birth_day).days // 365
 
-    def to_dict(self):
-        return {
-            "nickname": self.nickname,
-            "phonenum":self.phonenums,
-            "age":self.age,
-            "sex":self.sex,
-            "avatar":self.avatar,
-            "location":self.location
-        }
+    '''由于多个模型类都需要用到 to_dict 方法，所以我们单独封装一个，通过继承 ModelMixin 来继承这个方法 '''
+    # def to_dict(self):
+    #     return {
+    #         "nickname": self.nickname,
+    #         "phonenum":self.phonenums,
+    #         "age":self.age,
+    #         "sex":self.sex,
+    #         "avatar":self.avatar,
+    #         "location":self.location
+    #     }
 
 
-class Profile(models.Model):
+class Profile(models.Model,ModelMixin):
 
     location = models.CharField(max_length=32,verbose_name='目标城市')
     min_distance = models.IntegerField(default=1,verbose_name='最小查找范围')
