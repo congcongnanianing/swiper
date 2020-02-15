@@ -3,8 +3,10 @@ from django.shortcuts import render
 # Create your views here.
 from common import errors
 from lib.http import render_json
+from lib.qncloud import upload_to_qiniu
 from lib.sms import send_verify_code, check_vcode
 from user.forms import ProfileForm
+from user.logic import save_upload_file, upload_avatar_to_qiniu
 from user.models import User
 
 
@@ -55,5 +57,10 @@ def modify_profile(request):
 
 
 def upload_avatar(request):
-    return
+    avatar = request.FILES.get('avatar')
+    # 保存文件到本地
+    file_path,file_name = save_upload_file(request.user,avatar)
+    # 异步上传文件到七牛
+    upload_avatar_to_qiniu(request.user,file_path,file_name)
+    return render_json(None)
 

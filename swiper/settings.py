@@ -87,6 +87,20 @@ DATABASES = {
 }
 
 
+'''
+from django.conf import settings
+setting.  可以发现django的配置信息非常多（远远不止我们在setting.py文件中看到的那些），我们一般使用默认的就好。
+settings.CACHES  的结果  {‘default': {'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'}}
+
+'''
+# 缓存配置
+CACHES = {
+    'default':{
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+    }
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -124,3 +138,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = 'medias'
