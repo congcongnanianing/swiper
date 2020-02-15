@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'common.middleware.AuthMiddleware', # 自己写的中间件
+    'common.middleware.LogicErrorMiddleware', # 自己写的中间件
 ]
 
 ROOT_URLCONF = 'swiper.urls'

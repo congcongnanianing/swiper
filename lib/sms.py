@@ -3,6 +3,7 @@ import random
 import requests
 from django.core.cache import cache
 
+from common.errors import VcodeExist
 from swiper import config
 from worker import call_by_worker
 
@@ -20,26 +21,28 @@ def gen_verify_code(length=6):
 
 
 @call_by_worker
-def send_verify_code(phonenum):
-    ''' 发送验证码 '''
-    vcode = gen_verify_code()
-    
-    print('<<<<<<<<<<vcode>>>>>>>>>: %s' % vcode)
-
-    params = config.HY_SMS_PARAMS.copy()    # 用字典的copy方法，只针对局部进行修改
+def send_sms(phonenum,msg):
+    '''发送短信'''
+    params = config.HY_SMS_PARAMS.copy()  # 用字典的copy方法，只针对局部进行修改
     params['mobile'] = phonenum
-    params['content'] = params['content'] % vcode
-    #
-    # import time
-    # time.sleep(30)
-    # print('async task finished')
-    # response = None
+    params['content'] = params['content'] % msg
 
-    response = requests.post(config.HY_SMS_URL,data=params)
-
-    cache.set('VCode-%s' % phonenum,vcode,60)
+    response = requests.post(config.HY_SMS_URL, data=params)
 
     return response
+
+
+def send_verify_code(phonenum):
+    ''' 发送验证码 '''
+
+    key = 'VCode-%s' % phonenum
+
+    if not cache.has_key(key):
+        vcode = gen_verify_code()
+        send_sms(phonenum,vcode)
+        cache.set(key,vcode,300)
+    else:
+        raise VcodeExist
 
 
 def check_vcode(phonenum,vcode):

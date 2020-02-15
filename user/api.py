@@ -34,7 +34,8 @@ def login(request):
         #     user = User.objects.create()
 
     else:
-        return render_json(None,errors.VCODE_ERROR)
+        # return render_json(None,errors.VcodeError.code)
+        raise errors.VcodeError
 
 
 def show_profile(request):
@@ -53,7 +54,7 @@ def modify_profile(request):
         profile.save()
         return render_json(profile.to_dict())
     else:
-        return render_json(form.errors,errors.PROFILE_ERROR)
+        raise errors.ProfileError
 
 
 def upload_avatar(request):

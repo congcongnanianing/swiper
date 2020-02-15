@@ -1,3 +1,6 @@
+from sys import exc_info
+from traceback import format_exception
+
 from django.utils.deprecation import MiddlewareMixin
 
 from common import errors
@@ -22,12 +25,23 @@ class AuthMiddleware(MiddlewareMixin):
         # 用户登录验证
         uid = request.session.get('uid')
         if not uid:
-            return render_json(None,errors.LOGIN_REQUIRED)
+            return render_json(None,errors.LoginRequired.code)
         else:
             try:
                 user = User.objects.get(id=uid)
             except User.DoesNotExist:
-                return render_json(None,errors.USER_NOT_EXIST)
+                return render_json(None,errors.UserNotExist.code)
             else:
                 # 将user对象添加到 request
                 request.user = user
+
+
+class LogicErrorMiddleware(MiddlewareMixin):
+    def process_exception(self,request,exception):
+        '''异常处理'''
+        if isinstance(exception,errors.LogicError):
+            # 处理逻辑错误
+            return render_json(None,exception.code)
+        # else:
+        #     # 处理程序错误
+        #     error_info = format_exception(*exc_info())
