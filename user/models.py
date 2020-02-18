@@ -44,13 +44,12 @@ class User(models.Model,ModelMixin):
     '''
     由于使用外键性能比较差，且不适用于分布式数据库；我们为了达到相同对效果，可以将User和Profile两个类（一对一关系）id保持一致来实现关联。
     
-    
     '''
 
     @property
     def profile(self):
 
-        # 判断当前对象对_profile属性是否存在
+        # 判断当前对象的_profile属性是否存在
         if not hasattr(self,'_profile'):
             '''由于等号右侧执行的是数据库的操作，效率比较低，假如不将_profile设置为属性，那么执行 _profile.location、_profile.min_distance、_profile.max_distance 对应的是三次数据库的查询，
                加上self.设置为属性后，不管执行多少次 _profile.xxx属性的操作都只进行一次数据库的查询
