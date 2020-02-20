@@ -5,6 +5,7 @@ from django.db import models
 # Create your models here.
 from lib.orm import ModelMixin
 from social.models import Friend
+from vip.models import Vip
 
 SEX = (
         # ('1','男'),
@@ -25,6 +26,9 @@ class User(models.Model,ModelMixin):
     birth_day = models.IntegerField(default=1,verbose_name='出生日')
     avatar = models.CharField(max_length=256,verbose_name='个人形象')
     location = models.CharField(max_length=32,verbose_name='常居地')
+
+    # todo  user和vip 是多对一的关系，在user上增加字段vip_id实现user跟vip的关联
+    vip_id = models.IntegerField(default=1, verbose_name='vip ID')  # 默认是0级会员
 
     @property
     def age(self):
@@ -61,6 +65,15 @@ class User(models.Model,ModelMixin):
             self._profile, _ = Profile.objects.get_or_create(id=self.id)
 
         return self._profile
+
+    # todo  通过user.vip的操作可以连接到VIP表
+    @property
+    def vip(self):
+        # 判断当前对象的_vip属性是否存在
+        if not hasattr(self, '_vip'):
+            self._vip = Vip.objects.get(id=self.vip_id)
+
+        return self._vip
 
     def friends(self):
         friend_ids_list = Friend.friend_id_list(self.id)
