@@ -14,6 +14,7 @@ def get_verify_code(request):
     '''获取短信验证码'''
     phonenum = request.GET.get('phonenum')
     send_verify_code(phonenum)
+
     return render_json(None)
 
 

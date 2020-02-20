@@ -17,8 +17,8 @@ class Swiped(models.Model):
     uid = models.IntegerField(verbose_name='滑动者id')
     sid = models.IntegerField(verbose_name='被滑动者id')
     flag = models.CharField(max_length=10,choices=FLAGES,verbose_name='滑动类型')
-    dtime = models.DateField(auto_now=True)
-
+    # dtime = models.DateField(auto_now=True)
+    dtime = models.DateTimeField(auto_now=True)
 
     # todo get_latest_by
     class Meta:

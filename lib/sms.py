@@ -41,10 +41,13 @@ def send_verify_code(phonenum):
         vcode = gen_verify_code()
         send_sms(phonenum,vcode)
         cache.set(key,vcode,300)
+        print('>>>>>>>> vcode: %d' %vcode)
     else:
         raise VcodeExist
 
 
 def check_vcode(phonenum,vcode):
     cache_code = cache.get('VCode-%s' % phonenum)
+    print(cache_code)
+    print(vcode)
     return cache_code == vcode

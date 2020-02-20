@@ -8,6 +8,7 @@ from lib.http import render_json
 from user.models import User
 
 
+# todo django本身自带的Auth耦合性太强，我们这里使用自己自定义的（主要是为了将user添加到request上）
 class AuthMiddleware(MiddlewareMixin):
 
     # 白名单地址，即不需要登录就能访问的路径

@@ -60,6 +60,5 @@ def show_liked_me(request):
 
 def get_friends(request):
     friends = request.user.friends()
-    print('>>>>>>>>>>>>>>>>>>>>>>',friends)
     result = [f.to_dict() for f in friends]
     return render_json(result)
