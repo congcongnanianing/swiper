@@ -3,7 +3,6 @@ import datetime
 from django.db import models
 
 # Create your models here.
-from lib.orm import ModelMixin
 from social.models import Friend
 from vip.models import Vip
 
@@ -16,7 +15,7 @@ SEX = (
     )
 
 
-class User(models.Model,ModelMixin):
+class User(models.Model):
 
     nickname = models.CharField(max_length=32,unique=True)
     phonenums = models.CharField(max_length=16,unique=True)
@@ -62,7 +61,7 @@ class User(models.Model,ModelMixin):
                加上self.设置为属性后，不管执行多少次 _profile.xxx属性的操作都只进行一次数据库的查询
             '''
             # 这也是一种懒加载的方式，只有当执行user.profile的时候才会执行。get_or_create函数有两个返回值，另外一个不关心所以直接用 "_" 表示
-            self._profile, _ = Profile.objects.get_or_create(id=self.id)
+            self._profile, _ = Profile.get_or_create(id=self.id)
 
         return self._profile
 
@@ -71,7 +70,7 @@ class User(models.Model,ModelMixin):
     def vip(self):
         # 判断当前对象的_vip属性是否存在
         if not hasattr(self, '_vip'):
-            self._vip = Vip.objects.get(id=self.vip_id)
+            self._vip = Vip.get(id=self.vip_id)
 
         return self._vip
 
@@ -80,7 +79,7 @@ class User(models.Model,ModelMixin):
         return User.objects.filter(id__in=friend_ids_list)
 
 
-class Profile(models.Model,ModelMixin):
+class Profile(models.Model):
 
     location = models.CharField(max_length=32, verbose_name='目标城市')
     min_distance = models.IntegerField(default=1, verbose_name='最小查找范围')

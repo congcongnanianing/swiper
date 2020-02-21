@@ -29,7 +29,7 @@ class AuthMiddleware(MiddlewareMixin):
             return render_json(None,errors.LoginRequired.code)
         else:
             try:
-                user = User.objects.get(id=uid)
+                user = User.get(id=uid)
             except User.DoesNotExist:
                 return render_json(None,errors.UserNotExist.code)
             else:
