@@ -22,20 +22,23 @@ from vip import api as vip_api
 urlpatterns = [
     url(r'^api/user/vcode$', user_api.get_verify_code),
     url(r'^api/user/login$', user_api.login),
+    url(r'^api/user/user_back$', user_api.user_back),
     url(r'^api/user/profile/show$', user_api.show_profile),
     url(r'^api/user/profile/modify$', user_api.modify_profile),
     url(r'^api/user/avatar/upload$', user_api.upload_avatar),
 
 
-    url(r'^api/social/rcmd_users$',social_api.get_rcmd_users),
-    url(r'^api/social/like$',social_api.like),
-    url(r'^api/social/dislike$',social_api.dislike),
-    url(r'^api/social/superlike$',social_api.superlike),
-    url(r'^api/social/rewind$',social_api.rewind),
-    url(r'^api/social/like_me',social_api.show_liked_me),
-    url(r'^api/social/friends',social_api.get_friends),
+    url(r'^api/social/rcmd_users$', social_api.get_rcmd_users),
+    url(r'^api/social/rcmd_users_redis$', social_api.get_rcmd_users_redis),
+    url(r'^api/social/like$', social_api.like),
+    url(r'^api/social/dislike$', social_api.dislike),
+    url(r'^api/social/superlike$', social_api.superlike),
+    url(r'^api/social/rewind$',  social_api.rewind),
+    url(r'^api/social/like_me$',  social_api.show_liked_me),
+    url(r'^api/social/friends$', social_api.get_friends),
+    url(r'^api/social/hot$', social_api.hot_swiped),
 
 
-    url(r'^api/vip/permissions',vip_api.show_vip_permissions),
+    url(r'^api/vip/permissions$', vip_api.show_vip_permissions),
 
 ]

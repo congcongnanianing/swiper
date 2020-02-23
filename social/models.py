@@ -69,7 +69,7 @@ class Friend(models.Model):
         # 将id进行排序，在建立关系时就可以避免多次检查 A在前B在后、B在前A在后的逻辑
         uid1, uid2 = sorted([uid1, uid2])
 
-        cls.objects.get_or_create(uid1=uid1, uid2=uid2)
+        cls.get_or_create(uid1=uid1, uid2=uid2)
 
     @classmethod
     def is_friends(cls,uid1,uid2):

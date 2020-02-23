@@ -95,12 +95,42 @@ from django.conf import settings
 setting.  可以发现django的配置信息非常多（远远不止我们在setting.py文件中看到的那些），我们一般使用默认的就好。
 settings.CACHES  的结果  {‘default': {'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'}}
 
-'''
-# 缓存配置
+下面是django的默认缓存配置（没有显示的写在settings.py中），使用的是从本机分配的物理内存。
+
 CACHES = {
     'default':{
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
     }
+}
+'''
+
+# 在setting.py中添加配置信息时，名称一定都是要大写的，否则django不能识别
+
+# 使用django-redis 做缓存后端
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "PICKLE_VERSION": -1    # 序列化最高级别
+        }
+    }
+}
+
+# 操作原生redis配置
+REDIS = {
+    'Master': {
+        'host': '127.0.0.1',
+        'port': 6379,
+        'db': 1,
+    },
+    'Slave': {
+        'host': '127.0.0.1',
+        'port': 6379,
+        'db': 1,
+        },
+
 }
 
 

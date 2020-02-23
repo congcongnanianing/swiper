@@ -1,6 +1,8 @@
 from django.core.cache import cache
 from django.db import models
 
+'''对Model的一些方法的封装，monkey patch 设置缓存'''
+
 
 def get(cls, *args, **kwargs):
     '''数据优先从缓存中获取，缓存中取不到再从数据库中取'''
@@ -35,21 +37,30 @@ def get_or_create(cls, *args, **kwargs):
     if pk is not None:
         key = 'Model:%s:%s' % (cls.__name__, pk)
         model_obj = cache.get(key)
+
+        print('get from cache: %s' % model_obj)
+
         if isinstance(model_obj, cls):
             return model_obj, False     # 返回值False表示不是create，而是从缓存中取得。
 
     # 执行原生方法并添加缓存
     model_obj, created = cls.objects.get_or_create(*args, **kwargs)
+
+    print('get from db: %s' % model_obj)
+
     key = 'Model:%s:%s' % (cls.__name__, model_obj.pk)
     cache.set(key, model_obj, 604800)   # 缓存一周时间
+
+    print('set to cache')
+
     return model_obj, created
 
 
 def save_with_cache(model_save_func):
-    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+    def save(self, *args, **kwargs):
         '''存入数据后，同时写入缓存'''
         # 调用原生的 Model.save() 将数据保存到数据库
-        model_save_func(force_insert, force_update, using, update_fields)
+        model_save_func(self, *args, **kwargs)
         # 添加缓存
         key = 'Model:%s:%s' % (self.__class__.__name__, self.pk)
         cache.set(key, self, 604800)
@@ -85,5 +96,5 @@ def patch_model():
     models.Model.save = save_with_cache(models.Model.save)
 
     # 添加to_dict，这样之前写在lib/orm.py中的to_dict就可以不用了，模型类中也不需要再继承ModelMixin
-    models.Model.to_dict =  to_dict
+    models.Model.to_dict = to_dict
 

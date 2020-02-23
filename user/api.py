@@ -6,6 +6,7 @@ from common import errors
 from lib.http import render_json
 from lib.qncloud import upload_to_qiniu
 from lib.sms import send_verify_code, check_vcode
+from social.logic import pre_rcmd
 from user.forms import ProfileForm
 from user.logic import save_upload_file, upload_avatar_to_qiniu
 from user.models import User
@@ -28,6 +29,8 @@ def login(request):
         user,created = User.get_or_create(phonenums=phonenum)
         request.session['uid'] = user.id
 
+        pre_rcmd(request.user)
+
         return render_json(user.to_dict('birth_year'))
 
         # try:
@@ -38,6 +41,12 @@ def login(request):
     else:
         # return render_json(None,errors.VcodeError.code)
         raise errors.VcodeError
+
+
+def user_back(request):
+    '''这个方法用于APP从后台被唤醒的时候调用，触发预推荐异步任务'''
+    pre_rcmd(request.user)
+    return render_json(None)
 
 
 def show_profile(request):
