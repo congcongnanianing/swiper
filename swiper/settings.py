@@ -173,3 +173,21 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = 'medias'
+
+
+# 这个是打印出orm帮我们生成的sql语句
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'DEBUG' if DEBUG else 'INFO',
+        },
+    },
+}
